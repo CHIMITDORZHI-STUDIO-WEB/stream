@@ -8,25 +8,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap');
 
 :root {
-  --red:   #D0021B;
-  --blue:  #003DA5;
-  --dark:  #08090e;
-  --panel: #0f1018;
-  --card:  #12141e;
-  --border:#1c1f2e;
-  --glow:  rgba(208,2,27,0.3);
-  --text:  #f0f2f8;
-  --muted: #6a738a;
+  --red:    #D0021B;
+  --blue:   #003DA5;
+  --navy:   #0a0e27;
+  --panel:  #0d1230;
+  --card:   #101538;
+  --border: #1a2155;
+  --accent: #7b3cc7;
+  --cyan:   #00c8ff;
+  --magenta:#e83e8c;
+  --glow:   rgba(123,60,199,0.4);
+  --text:   #e8ecf8;
+  --muted:  #5a6499;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: var(--dark); color: var(--text); font-family: 'PT Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+html, body { background: var(--navy); color: var(--text); font-family: 'PT Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
 
 body::before {
   content: '';
   position: fixed; inset: 0;
   background:
-    radial-gradient(ellipse 70% 35% at 85% 5%, rgba(0,61,165,.14) 0%, transparent 55%),
-    radial-gradient(ellipse 55% 45% at 5% 90%, rgba(208,2,27,.10) 0%, transparent 55%);
+    radial-gradient(ellipse 80% 50% at 80% 0%, rgba(123,60,199,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 100%, rgba(0,200,255,.08) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(232,62,140,.06) 0%, transparent 50%);
   pointer-events: none; z-index: 0;
 }
 
@@ -34,25 +38,25 @@ body::before {
 .tass-strip {
   display: flex; align-items: center; gap: 9px;
   padding: 4px 12px;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
+  background: linear-gradient(90deg, #0d1230 0%, #141a45 100%);
+  border-bottom: 1px solid var(--border);
   position: relative; z-index: 10;
 }
 .tass-logo {
   font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700;
-  letter-spacing: 3px; color: #111; border: 2px solid #111;
+  letter-spacing: 3px; color: #fff; border: 2px solid #fff;
   padding: 1px 5px 0; line-height: 1.5; flex-shrink: 0;
 }
-.tass-desc { font-size: 7px; color: #666; text-transform: uppercase; letter-spacing: .7px; line-height: 1.3; }
-.tass-right { margin-left: auto; font-family: 'Oswald', sans-serif; font-size: 10px; color: #111; letter-spacing: 1.5px; font-weight: 600; text-align: right; }
+.tass-desc { font-size: 7px; color: var(--muted); text-transform: uppercase; letter-spacing: .7px; line-height: 1.3; }
+.tass-right { margin-left: auto; font-family: 'Oswald', sans-serif; font-size: 10px; color: var(--cyan); letter-spacing: 1.5px; font-weight: 600; text-align: right; }
 
 /* ===== HEADER ===== */
 header {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(6,7,12,.97);
+  background: rgba(10,14,39,.97);
   backdrop-filter: blur(12px);
-  border-bottom: 2px solid var(--red);
-  box-shadow: 0 2px 20px var(--glow);
+  border-bottom: 2px solid var(--accent);
+  box-shadow: 0 2px 30px var(--glow);
 }
 .hdr {
   display: flex; align-items: center;
@@ -65,19 +69,20 @@ header {
 .brand { flex:1; min-width:0; }
 .brand-row { display:flex; align-items:center; gap:7px; }
 .live-badge {
-  background:var(--red); color:#fff;
+  background: linear-gradient(135deg, var(--red), var(--magenta));
+  color:#fff;
   font-family:'Oswald',sans-serif; font-size:9px; font-weight:600;
   letter-spacing:2px; padding:2px 6px 1px; border-radius:2px;
   animation: blink 1.4s ease-in-out infinite; flex-shrink:0;
 }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.45} }
 .brand-name { font-family:'Oswald',sans-serif; font-size:24px; font-weight:700; letter-spacing:4px; line-height:1; }
-.brand-name em { color:var(--red); font-style:normal; }
+.brand-name em { color:var(--cyan); font-style:normal; }
 .brand-sub { font-family:'Oswald',sans-serif; font-size:7.5px; letter-spacing:1.5px; color:var(--muted); text-transform:uppercase; margin-top:1px; }
 
 .hdr-right { display:flex; flex-direction:column; align-items:flex-end; gap:2px; flex-shrink:0; }
 .cnt-pill { font-family:'Oswald',sans-serif; font-size:12px; color:var(--muted); letter-spacing:1px; }
-.cnt-pill strong { color:var(--red); }
+.cnt-pill strong { color:var(--cyan); }
 .event-mini { font-size:8px; color:var(--muted); text-align:right; }
 
 /* subtitle bar */
@@ -90,7 +95,7 @@ header {
   text-align: center;
   border-top: 1px solid var(--border);
 }
-.sub-bar span { color: var(--red); }
+.sub-bar span { color: var(--cyan); }
 
 /* ===== GRID ===== */
 #grid {
@@ -116,48 +121,142 @@ header {
   -webkit-tap-highlight-color: transparent;
 }
 .card:active { transform: scale(.94); }
-.card:hover { border-color: var(--red); box-shadow: 0 0 10px var(--glow); }
+.card:hover { border-color: var(--cyan); box-shadow: 0 0 16px rgba(0,200,255,.3); }
 
-/* animated scanlines */
+/* animated bg preview */
+.card-bg {
+  position: absolute; inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.card-bg-gradient {
+  position: absolute; inset: -50%;
+  width: 200%; height: 200%;
+  animation: bgMove 8s ease-in-out infinite alternate;
+}
+@keyframes bgMove {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(-5%, 8%) rotate(3deg); }
+  50%  { transform: translate(5%, -5%) rotate(-2deg); }
+  75%  { transform: translate(-8%, -3%) rotate(4deg); }
+  100% { transform: translate(3%, 6%) rotate(-1deg); }
+}
+
+/* fake game elements */
+.card-scene {
+  position: absolute; inset: 0; z-index: 0;
+  overflow: hidden;
+}
+.card-scene .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: .6;
+  animation: orbFloat 6s ease-in-out infinite alternate;
+}
+.card-scene .orb:nth-child(2) { animation-delay: -2s; animation-duration: 8s; }
+.card-scene .orb:nth-child(3) { animation-delay: -4s; animation-duration: 5s; }
+@keyframes orbFloat {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(15px, -20px) scale(1.3); }
+  100% { transform: translate(-10px, 15px) scale(.8); }
+}
+
+/* scanlines */
 .card::before {
   content: '';
   position: absolute; inset: 0;
-  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,.012) 3px, rgba(255,255,255,.012) 4px);
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.015) 2px, rgba(255,255,255,.015) 3px);
   pointer-events: none; z-index: 1;
 }
 
 /* gradient bottom */
 .card::after {
   content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 55%;
-  background: linear-gradient(to top, rgba(0,0,0,.85) 0%, transparent 100%);
+  position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+  background: linear-gradient(to top, rgba(10,14,39,.95) 0%, rgba(10,14,39,.4) 50%, transparent 100%);
   pointer-events: none; z-index: 2;
 }
 
+/* fake UI overlay elements */
+.card-ui {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 1;
+}
+.card-ui .ui-bar {
+  position: absolute; bottom: 28%; left: 8%; right: 8%;
+  height: 2px;
+  background: rgba(255,255,255,.08);
+  border-radius: 1px;
+}
+.card-ui .ui-bar-fill {
+  height: 100%;
+  border-radius: 1px;
+  animation: barFill 12s linear infinite;
+}
+@keyframes barFill {
+  0%   { width: 15%; }
+  50%  { width: 85%; }
+  100% { width: 15%; }
+}
+.card-ui .ui-viewers {
+  position: absolute; top: 8px; left: 8px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 7px; letter-spacing: 1px;
+  color: rgba(255,255,255,.4);
+  display: flex; align-items: center; gap: 3px;
+}
+.card-ui .ui-viewers::before {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: blink 1.2s infinite;
+}
+.card-ui .ui-chat {
+  position: absolute; right: 6px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 3px;
+  opacity: .25;
+}
+.card-ui .ui-chat-line {
+  height: 2px;
+  border-radius: 1px;
+  background: rgba(255,255,255,.5);
+  animation: chatPulse 3s ease-in-out infinite;
+}
+.card-ui .ui-chat-line:nth-child(2) { animation-delay: -1s; }
+.card-ui .ui-chat-line:nth-child(3) { animation-delay: -2s; }
+@keyframes chatPulse {
+  0%, 100% { opacity: .2; width: 20px; }
+  50%      { opacity: .6; width: 30px; }
+}
+
 .card-twitch-icon {
-  width: 24px; height: 24px; opacity: .2;
+  width: 24px; height: 24px; opacity: .15;
   transition: opacity .2s;
   position: relative; z-index: 3;
   margin-bottom: 5px;
   flex-shrink: 0;
 }
-.card:hover .card-twitch-icon { opacity: .55; }
+.card:hover .card-twitch-icon { opacity: .5; }
 
 .card-avatar {
-  width: 36px; height: 36px;
+  width: 40px; height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--blue), var(--red));
+  background: linear-gradient(135deg, var(--accent), var(--magenta));
   display: flex; align-items: center; justify-content: center;
   font-family: 'Oswald', sans-serif;
-  font-size: 14px; font-weight: 700;
+  font-size: 15px; font-weight: 700;
   color: #fff;
   position: relative; z-index: 3;
   margin-bottom: 5px;
   flex-shrink: 0;
-  box-shadow: 0 0 12px var(--glow);
-  transition: transform .2s;
+  box-shadow: 0 0 16px rgba(123,60,199,.5), 0 0 40px rgba(123,60,199,.15);
+  transition: transform .2s, box-shadow .2s;
+  border: 2px solid rgba(255,255,255,.15);
 }
-.card:hover .card-avatar { transform: scale(1.08); }
+.card:hover .card-avatar { transform: scale(1.1); box-shadow: 0 0 20px rgba(0,200,255,.5); }
 
 .card-info {
   position: absolute; bottom: 0; left: 0; right: 0;
@@ -174,6 +273,7 @@ header {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-shadow: 0 1px 8px rgba(0,0,0,.8);
 }
 .card-handle {
   font-size: 7.5px; color: var(--muted);
@@ -182,9 +282,9 @@ header {
 
 .card-soon {
   position: absolute; top: 5px; left: 50%; transform: translateX(-50%);
-  background: rgba(208,2,27,.18);
-  border: 1px solid rgba(208,2,27,.4);
-  color: var(--red);
+  background: rgba(123,60,199,.2);
+  border: 1px solid rgba(123,60,199,.5);
+  color: var(--accent);
   font-family: 'Oswald', sans-serif;
   font-size: 7px; letter-spacing: 1.5px;
   padding: 2px 6px 1px; border-radius: 20px;
@@ -196,7 +296,20 @@ header {
   position: absolute; top: 5px; right: 5px;
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--red);
+  box-shadow: 0 0 6px var(--red);
   animation: blink 1.2s infinite;
+  z-index: 4;
+}
+
+/* LIVE badge on card */
+.card-live-badge {
+  position: absolute; top: 5px; left: 5px;
+  background: linear-gradient(135deg, var(--red), var(--magenta));
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 6px; font-weight: 600;
+  letter-spacing: 1.5px;
+  padding: 2px 5px 1px; border-radius: 2px;
   z-index: 4;
 }
 
@@ -204,7 +317,7 @@ header {
 .viewer {
   display: none;
   position: fixed; inset: 0;
-  background: #000;
+  background: var(--navy);
   z-index: 300;
   flex-direction: column;
 }
@@ -213,12 +326,13 @@ header {
 .viewer-header {
   display: flex; align-items: center; gap: 10px;
   padding: 10px 14px;
-  background: rgba(0,0,0,.9);
-  border-bottom: 2px solid var(--red);
+  background: rgba(10,14,39,.95);
+  border-bottom: 2px solid var(--accent);
   flex-shrink: 0;
 }
 .viewer-back {
-  background: var(--red); border: none; color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--magenta));
+  border: none; color: #fff;
   font-family: 'Oswald', sans-serif; font-size: 13px;
   font-weight: 600; letter-spacing: 1px;
   padding: 8px 14px; border-radius: 3px;
@@ -236,7 +350,7 @@ header {
 .viewer-stream {
   flex: 1;
   display: flex; align-items: stretch; justify-content: center;
-  background: #000;
+  background: var(--navy);
   position: relative;
 }
 .viewer-stream iframe {
@@ -251,13 +365,13 @@ header {
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 14px;
-  background: #000;
+  background: var(--navy);
   z-index: 2;
 }
 .loader-spin {
   width: 36px; height: 36px;
   border: 3px solid var(--border);
-  border-top-color: var(--red);
+  border-top-color: var(--cyan);
   border-radius: 50%;
   animation: spin .8s linear infinite;
 }
@@ -268,7 +382,7 @@ header {
 }
 
 .viewer-footer {
-  background: rgba(0,0,0,.95);
+  background: rgba(10,14,39,.95);
   border-top: 1px solid var(--border);
   padding: 8px 12px;
   flex-shrink: 0;
@@ -291,17 +405,17 @@ header {
   padding: 5px 10px;
   display: flex; flex-direction: column; align-items: center;
   cursor: pointer; flex-shrink: 0;
-  transition: border-color .15s;
+  transition: border-color .15s, box-shadow .15s;
   min-width: 64px;
 }
-.footer-chip:hover, .footer-chip.active { border-color: var(--red); }
-.footer-chip .fav { width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:8px;font-weight:700;color:#fff;margin-bottom:3px; background: linear-gradient(135deg,var(--blue),var(--red)); }
+.footer-chip:hover, .footer-chip.active { border-color: var(--cyan); box-shadow: 0 0 8px rgba(0,200,255,.2); }
+.footer-chip .fav { width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:8px;font-weight:700;color:#fff;margin-bottom:3px; background: linear-gradient(135deg,var(--accent),var(--magenta)); }
 .footer-chip .fn { font-family:'Oswald',sans-serif;font-size:8px;letter-spacing:.8px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:58px; }
 
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--dark); }
-::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 </style>
 </head>
 <body>
@@ -309,7 +423,7 @@ header {
 <div class="tass-strip">
   <div class="tass-logo">ТАСС</div>
   <div class="tass-desc">Информационное<br>агентство России</div>
-  <div class="tass-right">Лидеры<br>Нового Времени '26</div>
+  <div class="tass-right">Лидеры Нового Времени '26</div>
 </div>
 
 <header>
@@ -333,7 +447,7 @@ header {
 <!-- VIEWER -->
 <div class="viewer" id="viewer">
   <div class="viewer-header">
-    <button class="viewer-back" onclick="closeViewer()">← Назад</button>
+    <button class="viewer-back" onclick="closeViewer()">&#8592; Назад</button>
     <div>
       <div class="viewer-title" id="vTitle">—</div>
       <div class="viewer-subtitle" id="vHandle">—</div>
@@ -379,12 +493,77 @@ const STREAMERS = [
   { name: 'Кейк',           handle: 'OverClockers',     twitch: 'overclockers1' },
 ];
 
-const twitchSVG = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M11.64 5.93H13.07V10.21H11.64M15.57 5.93H17V10.21H15.57M7 2L3.43 5.57V18.43H7.71V22L11.29 18.43H14.14L20.57 12V2M19.14 11.29L16.29 14.14H13.43L10.93 16.64V14.14H7.71V3.43H19.14Z" fill="white"/>
-</svg>`;
+// Color palettes for card backgrounds (each card gets unique combo)
+const PALETTES = [
+  ['#6b2fa0','#e83e8c','#00c8ff'],
+  ['#1a3a8f','#7b3cc7','#00e5ff'],
+  ['#8b1a4a','#c74b8f','#3d7aff'],
+  ['#0a4f6e','#2eb8a6','#7b3cc7'],
+  ['#4a1a8f','#e83e8c','#ffd700'],
+  ['#1a6b3f','#00c8ff','#7b3cc7'],
+  ['#8f2a1a','#ff6b35','#00c8ff'],
+  ['#1a1a6b','#e83e8c','#00ffc8'],
+  ['#6b1a6b','#ff3c7b','#3df5ff'],
+  ['#1a4f8f','#c74bdd','#ff6b9d'],
+  ['#3f1a8f','#00c8ff','#e83e8c'],
+  ['#0a3f6e','#7b3cc7','#00e5a0'],
+  ['#6b2f2f','#e8a03e','#00c8ff'],
+  ['#1a6b6b','#3cc7a0','#e83e8c'],
+  ['#4a0a6e','#ff3c7b','#00c8ff'],
+  ['#2a1a8f','#00c8ff','#ff6bdd'],
+  ['#6b4a1a','#ff9d3e','#7b3cc7'],
+  ['#1a2a6b','#e83e8c','#00ffa0'],
+  ['#0a6e4a','#00c8ff','#c74bdd'],
+  ['#6b1a4a','#ff3caa','#00e5ff'],
+];
+
+// Fake viewer counts
+const FAKE_VIEWERS = [
+  '12.4K','8.7K','5.2K','15.1K','3.8K','9.3K','6.1K','4.5K',
+  '11.2K','7.6K','2.9K','18.3K','4.1K','6.8K','3.2K','10.5K',
+  '5.7K','22.1K','1.8K','7.4K'
+];
 
 function initials(name) {
   return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+}
+
+function buildCardScene(idx) {
+  const p = PALETTES[idx % PALETTES.length];
+  const delay1 = (idx * 0.7) % 6;
+  const delay2 = (idx * 1.3) % 8;
+  const delay3 = (idx * 0.5) % 5;
+  const sizes = [
+    [60 + idx*3 % 40, 60 + idx*5 % 40],
+    [40 + idx*7 % 30, 40 + idx*2 % 30],
+    [50 + idx*4 % 35, 50 + idx*6 % 35],
+  ];
+  return `
+    <div class="card-scene">
+      <div class="orb" style="width:${sizes[0][0]}px;height:${sizes[0][1]}px;background:${p[0]};top:${10+idx*3%50}%;left:${5+idx*7%60}%;animation-delay:-${delay1}s"></div>
+      <div class="orb" style="width:${sizes[1][0]}px;height:${sizes[1][1]}px;background:${p[1]};top:${30+idx*5%40}%;left:${20+idx*4%50}%;animation-delay:-${delay2}s"></div>
+      <div class="orb" style="width:${sizes[2][0]}px;height:${sizes[2][1]}px;background:${p[2]};top:${50+idx*2%30}%;right:${5+idx*3%40}%;animation-delay:-${delay3}s"></div>
+    </div>
+  `;
+}
+
+function buildCardUI(idx) {
+  const p = PALETTES[idx % PALETTES.length];
+  const viewers = FAKE_VIEWERS[idx % FAKE_VIEWERS.length];
+  const barWidth = 30 + (idx * 17) % 50;
+  return `
+    <div class="card-ui">
+      <div class="ui-viewers">${viewers}</div>
+      <div class="ui-bar">
+        <div class="ui-bar-fill" style="background:linear-gradient(90deg,${p[0]},${p[1]});animation-delay:-${idx*0.8}s"></div>
+      </div>
+      <div class="ui-chat">
+        <div class="ui-chat-line" style="width:${20+idx%15}px;animation-delay:-${idx*0.3}s"></div>
+        <div class="ui-chat-line" style="width:${15+idx%20}px;animation-delay:-${idx*0.7+1}s"></div>
+        <div class="ui-chat-line" style="width:${25+idx%10}px;animation-delay:-${idx*0.5+2}s"></div>
+      </div>
+    </div>
+  `;
 }
 
 function buildGrid() {
@@ -394,7 +573,9 @@ function buildGrid() {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-      ${s.twitch ? '<div class="card-live-dot"></div>' : '<div class="card-soon">скоро в эфире</div>'}
+      ${buildCardScene(i)}
+      ${buildCardUI(i)}
+      ${s.twitch ? '<div class="card-live-dot"></div><div class="card-live-badge">LIVE</div>' : '<div class="card-soon">\u0441\u043a\u043e\u0440\u043e \u0432 \u044d\u0444\u0438\u0440\u0435</div>'}
       <div class="card-avatar">${initials(s.name)}</div>
       <svg class="card-twitch-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.64 5.93H13.07V10.21H11.64M15.57 5.93H17V10.21H15.57M7 2L3.43 5.57V18.43H7.71V22L11.29 18.43H14.14L20.57 12V2M19.14 11.29L16.29 14.14H13.43L10.93 16.64V14.14H7.71V3.43H19.14Z" fill="white"/></svg>
       <div class="card-info">
@@ -414,9 +595,8 @@ function openViewer(i) {
   currentIdx = i;
 
   document.getElementById('vTitle').textContent   = s.name;
-  document.getElementById('vHandle').textContent  = '@' + s.handle + (s.twitch ? ' · twitch.tv/' + s.twitch : '');
+  document.getElementById('vHandle').textContent  = '@' + s.handle + (s.twitch ? ' \u00b7 twitch.tv/' + s.twitch : '');
 
-  // loader
   const frame  = document.getElementById('vFrame');
   const loader = document.getElementById('vLoader');
   frame.style.display = 'none';
@@ -426,18 +606,16 @@ function openViewer(i) {
     frame.src = `https://player.twitch.tv/?channel=${encodeURIComponent(s.twitch)}&parent=${location.hostname||'localhost'}&muted=false&autoplay=true`;
     frame.onload = () => { loader.style.display='none'; frame.style.display='block'; };
   } else {
-    // placeholder — show demo message
     setTimeout(() => {
       loader.innerHTML = `
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.3"><path d="M11.64 5.93H13.07V10.21H11.64M15.57 5.93H17V10.21H15.57M7 2L3.43 5.57V18.43H7.71V22L11.29 18.43H14.14L20.57 12V2M19.14 11.29L16.29 14.14H13.43L10.93 16.64V14.14H7.71V3.43H19.14Z" fill="white"/></svg>
         <div style="font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px;color:#fff;margin-top:8px">${s.name}</div>
-        <div style="font-size:11px;color:#6a738a;margin-top:4px;letter-spacing:1px">@${s.handle}</div>
-        <div style="margin-top:16px;background:rgba(208,2,27,.15);border:1px solid rgba(208,2,27,.4);color:#D0021B;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:2px;padding:6px 16px;border-radius:20px">СКОРО В ЭФИРЕ · 20 МАРТА</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:1px">@${s.handle}</div>
+        <div style="margin-top:16px;background:rgba(123,60,199,.2);border:1px solid rgba(123,60,199,.5);color:#7b3cc7;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:2px;padding:6px 16px;border-radius:20px">\u0421\u041a\u041e\u0420\u041e \u0412 \u042d\u0424\u0418\u0420\u0415 \u00b7 20 \u041c\u0410\u0420\u0422\u0410</div>
       `;
     }, 800);
   }
 
-  // footer chips
   const row = document.getElementById('footerRow');
   row.innerHTML = '';
   STREAMERS.forEach((st, idx) => {
@@ -459,7 +637,7 @@ function closeViewer() {
   document.getElementById('vFrame').style.display = 'none';
   const loader = document.getElementById('vLoader');
   loader.style.display = 'flex';
-  loader.innerHTML = `<div class="loader-spin"></div><div class="loader-text">ЗАГРУЗКА СТРИМА...</div>`;
+  loader.innerHTML = `<div class="loader-spin"></div><div class="loader-text">\u0417\u0410\u0413\u0420\u0423\u0417\u041a\u0410 \u0421\u0422\u0420\u0418\u041c\u0410...</div>`;
   document.body.style.overflow = '';
   currentIdx = -1;
 }
