@@ -357,26 +357,26 @@ header {
 
 <script>
 const STREAMERS = [
-  { name: 'Амина Малова',   handle: 'AminaLive',       twitch: '' },
-  { name: 'Даниил Петров',  handle: 'DanPetrovTV',     twitch: '' },
-  { name: 'Карина Фокс',    handle: 'KarinaFox',       twitch: '' },
-  { name: 'Максим Орлов',   handle: 'MaxOrlov',        twitch: '' },
-  { name: 'Влад Черный',    handle: 'VladCherny',      twitch: '' },
-  { name: 'Соня Краснова',  handle: 'SonyaStream',     twitch: '' },
-  { name: 'Артём Белов',    handle: 'ArtemBelov',      twitch: '' },
-  { name: 'Полина Зорина',  handle: 'PolinaZ',         twitch: '' },
-  { name: 'Игорь Лебедев',  handle: 'IgorLive',        twitch: '' },
-  { name: 'Вика Морозова',  handle: 'VikaMoroz',       twitch: '' },
-  { name: 'Стас Волков',    handle: 'StasVolk',        twitch: '' },
-  { name: 'Юля Нова',       handle: 'JuliaNova',       twitch: '' },
-  { name: 'Роман Гордеев',  handle: 'RomanG',          twitch: '' },
-  { name: 'Лиза Звездина',  handle: 'LizaStars',       twitch: '' },
-  { name: 'Андрей Быков',   handle: 'BukovLive',       twitch: '' },
-  { name: 'Настя Сильвер',  handle: 'NastasiaSilver',  twitch: '' },
-  { name: 'Кирилл Дым',     handle: 'KirillDym',       twitch: '' },
-  { name: 'Маша Светлова',  handle: 'MashaLight',      twitch: '' },
-  { name: 'Денис Коваль',   handle: 'DenisK',          twitch: '' },
-  { name: 'Алёна Миро',     handle: 'AlenaMiro',       twitch: '' },
+  { name: 'Братишкин',      handle: 'Bratishkinoff',    twitch: 'bratishkinoff' },
+  { name: 'Сильвернейм',    handle: 'Silvername',       twitch: 'silvername' },
+  { name: 'JesusAVGN',      handle: 'JesusAVGN',       twitch: 'jesusavgn' },
+  { name: 'Сегалл',         handle: 'Segall',           twitch: 'segall' },
+  { name: 'HardPlay',       handle: 'HardPlay',         twitch: 'hardplay' },
+  { name: 'Артас',          handle: 'Arthas',           twitch: 'arthas' },
+  { name: 'Ласка',          handle: 'Lasqa',            twitch: 'lasqa' },
+  { name: 'Just_NS',        handle: 'Just_NS',          twitch: 'just_ns' },
+  { name: 'Эвелон',         handle: 'Evelone192',       twitch: 'evelone192' },
+  { name: 'C_a_k_e',        handle: 'C_a_k_e',          twitch: 'c_a_k_e' },
+  { name: 'Мэддисон',       handle: 'Maddyson',         twitch: 'maddyson' },
+  { name: 'Бастер',         handle: 'BusterShow',       twitch: 'buster' },
+  { name: 'Welovegames',    handle: 'Welovegames',      twitch: 'welovegames' },
+  { name: 'Пупок',          handle: 'Papich',           twitch: 'papich' },
+  { name: 'Стрей228',       handle: 'Stray228',         twitch: 'stray228' },
+  { name: 'Дрединг',        handle: 'Dreding',          twitch: 'dreding' },
+  { name: 'Хани Мэйд',     handle: 'HoneyMaid',        twitch: 'honey_maid' },
+  { name: 'RuHub',          handle: 'Dota2RuHub',       twitch: 'dota2ruhub' },
+  { name: 'Лёха',           handle: 'Roadhouse',        twitch: 'roadhouse' },
+  { name: 'Кейк',           handle: 'OverClockers',     twitch: 'overclockers1' },
 ];
 
 const twitchSVG = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -394,7 +394,7 @@ function buildGrid() {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
-      <div class="card-soon">скоро в эфире</div>
+      ${s.twitch ? '<div class="card-live-dot"></div>' : '<div class="card-soon">скоро в эфире</div>'}
       <div class="card-avatar">${initials(s.name)}</div>
       <svg class="card-twitch-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.64 5.93H13.07V10.21H11.64M15.57 5.93H17V10.21H15.57M7 2L3.43 5.57V18.43H7.71V22L11.29 18.43H14.14L20.57 12V2M19.14 11.29L16.29 14.14H13.43L10.93 16.64V14.14H7.71V3.43H19.14Z" fill="white"/></svg>
       <div class="card-info">
